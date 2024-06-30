@@ -1,0 +1,44 @@
+body {
+    display: flex;
+    height: 80vh;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 0.12rem;
+}
+
+input,
+select {
+    display: block;
+    width: 26rem;
+    height: 3.25rem;
+    border-radius: 0.5rem;
+    font-size: large;
+    margin: 1.75rem auto;
+    border-style: solid;
+    text-align: center;
+}
+
+label {
+    font-size: x-large;
+
+}
+
+select {
+    background-color: white;
+}
+
+@media (width < 420px) {
+
+    input,
+    select {
+        width: 21rem;
+    }
+}
+
+@media (width < 360px) {
+
+    input,
+    select {
+        width: 16rem;
+    }
+}

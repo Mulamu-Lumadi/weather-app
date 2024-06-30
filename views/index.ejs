@@ -1,0 +1,39 @@
+<%- include("partials/header.ejs") %>
+
+<form action="/submit/placeText" method="post">
+    <input type="text" name="placeName" placeholder="Enter place name">
+    <button type="submit" class="btn btn-dark btn-lg">SUBMIT</button>
+</form>
+
+<%# error message is longer than an empty string %>
+<% if (locError.length > 0) { %>
+    <h1 class="text-danger"><%= locError %></h1>
+<% } %>
+
+<%# object exists and error message is an empty string %>
+<% if (locals.dropDownPlace && (locError.length === 0)) { %>
+    <form action="/submit/placeDrop" class="my-3" method="post">
+            <label for="places" class="d-block my-3">Choose the location:</label>
+                <select name="places" id="places" class="my-2">
+                    <%# objects in the arr are printed, the index returned for %> 
+                    <%# the item clicked in drop down %>
+                    <% dropDownPlace.results.forEach((e,index) => { %>
+                        <option value="<%= index %>"><%= e.name %>, <%= e.country %>, <%= e.admin1 %></option>
+                    <% }); %>
+                </select>
+        <button type="submit" class="btn btn-dark btn-lg d-block mx-auto my-4">SUBMIT</button>
+    </form>
+<% } %>
+
+<%# rainfall boolean is true, rainMeasure is 0 or greater, error message %>
+<%# is longer than an empty string %>
+<% if (rainfall && (rainMeasure > -1) && (locError.length === 0)) { %>
+    <h1>Be sure to bring an umbrella, It will rain tomorrow</h1>
+<% } else if (!rainfall && (rainMeasure > -1) && (locError.length === 0)) { %>
+    <h1>There is no rain tomorrow</h1>
+<% } %>
+
+<%- include("partials/footer.ejs") %>
+
+
+
